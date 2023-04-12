@@ -2,21 +2,23 @@
   <div class="player">
     <div class="progress" ref="playerProgressBar">
       <div class="album-info" v-if="player.currentTrack">
-        <div class="track-name">{{ player.currentTrack.name }}</div>
+        <!-- <div class="track-name">{{ player.currentTrack.name }}</div> -->
       </div>
       <div class="progress__bar" @click="clickProgress">
         <div class="progress__current" :style="{ width: `${player.barWidth}%` }"></div>
       </div>
+
+      <button ref="playBtn" @click="play">play</button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { usePlayer } from '@/use/player'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
-const { player, initPlayer, clickProgress, playerProgressBar } = usePlayer()
-
+const { player, initPlayer, clickProgress, playerProgressBar, play } = usePlayer()
+const playBtn = ref()
 onMounted(() => {
   initPlayer()
 })
@@ -39,11 +41,11 @@ onMounted(() => {
 .progress__current {
   height: inherit;
   width: 0%;
-  background-color: #a3b3ce;
+  background-color: #354052;
   border-radius: 10px;
 }
 
 .track-name {
-  @apply text-center;
+  @apply text-center text-white;
 }
 </style>

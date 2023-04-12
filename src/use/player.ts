@@ -2,13 +2,13 @@ import { reactive, ref } from 'vue'
 import crushOnYou from '@/assets/finding_hope-crush_on_you.mp3'
 
 export interface Player {
-  audio: HTMLAudioElement
+  audio: HTMLAudioElement | null
   // circleLeft: number | null,
   barWidth: number
   duration: string | null
   currentTime: string | null
   isTimerPlaying: boolean
-  currentTrack: Track
+  currentTrack: Track | null
   currentTrackIndex: number
   transitionName: string | null
 }
@@ -64,6 +64,7 @@ export const usePlayer = () => {
   }
 
   const generateTime = () => {
+    if (!player.audio) return
     const width = (100 / player.audio.duration) * player.audio.currentTime
     player.barWidth = width
     // player.circleLeft = width + '%'
@@ -88,6 +89,7 @@ export const usePlayer = () => {
   }
 
   const updateBar = (x: number) => {
+    if (!player.audio) return
     const progress = playerProgressBar.value
     const maxduration = player.audio.duration
     const position = x - progress.offsetLeft
@@ -105,12 +107,14 @@ export const usePlayer = () => {
   }
 
   const clickProgress = (e: any) => {
+    if (!player.audio) return
     player.isTimerPlaying = true
     player.audio.pause()
     updateBar(e.pageX)
   }
 
   const play = (): void => {
+    if (!player.audio) return
     if (player.audio.paused) {
       player.audio.play()
       player.isTimerPlaying = true
