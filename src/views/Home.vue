@@ -1,24 +1,20 @@
 <template>
   <main class="home">
     <Cover />
-    <div class="wrapper">
-      <Player />
-    </div>
+    <Player class="mt-[15px]" />
+    <Lyric />
   </main>
 </template>
 
 <script setup lang="ts">
 import Cover from '@/components/Cover.vue'
 import Player from '@/components/Player.vue'
+import Lyric from '@/components/Lyric.vue'
 </script>
 
 <style scoped lang="postcss">
 .home {
-  @apply p-[30px];
-}
-
-.wrapper {
-  @apply relative z-1;
-  @apply mt-[10px];
+  @apply max-w-[500px] m-auto;
+  @apply p-[30px] overflow-y-auto;
 }
 </style>

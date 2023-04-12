@@ -15,8 +15,11 @@ import baby from '@/assets/baby.jpg'
 
 <style scoped lang="postcss">
 .cover {
-  @apply w-[70%] h-[450px] overflow-hidden m-auto;
+  @apply w-[70%];
+  @apply overflow-hidden m-auto;
   @apply rounded-md;
+  @apply shadow-xl;
+  @apply shadow-dark-700;
   @apply relative;
 }
 

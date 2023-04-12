@@ -13,7 +13,9 @@ import { RouterView } from 'vue-router'
 <style>
 html,
 body,
+#app,
 .app {
+  @apply w-full h-full;
   @apply overflow-hidden;
   @apply bg-gray-700;
 }
