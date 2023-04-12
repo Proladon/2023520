@@ -1,9 +1,10 @@
 import { reactive, ref } from 'vue'
+import crushOnYou from '@/assets/finding_hope-crush_on_you.mp3'
 
 export interface Player {
   audio: HTMLAudioElement
   // circleLeft: number | null,
-  // barWidth: number | null,
+  barWidth: number
   duration: string | null
   currentTime: string | null
   isTimerPlaying: boolean
@@ -24,7 +25,7 @@ export const usePlayer = () => {
   const player = reactive<Player>({
     audio: null,
     // circleLeft: null,
-    // barWidth: null,
+    barWidth: 0,
     duration: null,
     currentTime: null,
     isTimerPlaying: false,
@@ -36,10 +37,10 @@ export const usePlayer = () => {
 
   const tracks: Track[] = [
     {
-      name: 'Butterflies',
+      name: 'Crush On You',
       artist: 'Sia',
       cover: 'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/4.jpg',
-      source: 'https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/4.mp3',
+      source: crushOnYou,
       url: 'https://www.youtube.com/watch?v=kYgGwWYOd9Y'
     }
   ]
@@ -63,8 +64,8 @@ export const usePlayer = () => {
   }
 
   const generateTime = () => {
-    // const width = (100 / player.audio.duration) * player.audio.currentTime
-    // player.barWidth = width + '%'
+    const width = (100 / player.audio.duration) * player.audio.currentTime
+    player.barWidth = width
     // player.circleLeft = width + '%'
     let durmin = Math.floor(player.audio.duration / 60).toString()
     let dursec = Math.floor(player.audio.duration - Number(durmin) * 60).toString()
@@ -97,7 +98,7 @@ export const usePlayer = () => {
     if (percentage < 0) {
       percentage = 0
     }
-    // player.barWidth = percentage + "%";
+    player.barWidth = percentage
     // player.circleLeft = percentage + "%";
     player.audio.currentTime = (maxduration * percentage) / 100
     player.audio.play()
@@ -125,6 +126,7 @@ export const usePlayer = () => {
     play,
     generateTime,
     updateBar,
-    clickProgress
+    clickProgress,
+    playerProgressBar
   }
 }
