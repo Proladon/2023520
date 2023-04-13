@@ -1,4 +1,4 @@
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import crushOnYou from '@/assets/finding_hope-crush_on_you_cut.mp3'
 
 export type LyricItem = {
@@ -18,6 +18,7 @@ export interface Player {
   currentTrack: Track | null
   currentTrackIndex: number
   transitionName: string | null
+  playerProgressBar: any
 }
 
 export type Track = {
@@ -29,7 +30,7 @@ export type Track = {
 }
 import { defineStore } from 'pinia'
 
-export const usePlayerStore = defineStore('counter', () => {
+export const usePlayerStore = defineStore('player', () => {
   const player = reactive<Player>({
     audio: null,
     // circleLeft: null,
@@ -40,9 +41,10 @@ export const usePlayerStore = defineStore('counter', () => {
     isTimerPlaying: false,
     currentTrack: null,
     currentTrackIndex: 0,
-    transitionName: null
+    transitionName: null,
+    playerProgressBar: null
   })
-  const playerProgressBar = ref()
+  // const playerProgressBar = ref(null)
 
   const tracks: Track[] = [
     {
@@ -102,7 +104,7 @@ export const usePlayerStore = defineStore('counter', () => {
 
   const updateBar = (x: number) => {
     if (!player.audio) return
-    const progress = playerProgressBar.value
+    const progress = player.playerProgressBar
     const maxduration = player.audio.duration
     const position = x - progress.offsetLeft
     let percentage = (100 * position) / progress.offsetWidth
@@ -122,7 +124,7 @@ export const usePlayerStore = defineStore('counter', () => {
     if (!player.audio) return
     player.isTimerPlaying = true
     player.audio.pause()
-    updateBar(e.pageX)
+    updateBar(e.layerX)
   }
 
   const play = (): void => {
@@ -142,7 +144,7 @@ export const usePlayerStore = defineStore('counter', () => {
     play,
     generateTime,
     updateBar,
-    clickProgress,
-    playerProgressBar
+    clickProgress
+    // playerProgressBar
   }
 })

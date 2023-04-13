@@ -1,9 +1,5 @@
 <template>
   <div class="lyric">
-    <p>{{ rawTime }}</p>
-    <br />
-    <!-- <p :class="{ 'fade-in': change, 'fade-out': !change }">{{ curLyric }}</p> -->
-
     <div class="lyrics-wrapper">
       <div class="lyric-position" v-for="lyric in lyrics" :key="lyric.text">
         <LyricItem :item="lyric" :curTime="rawTime" />

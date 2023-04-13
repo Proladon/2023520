@@ -1,6 +1,6 @@
 <template>
   <div class="player">
-    <div class="progress" ref="progress">
+    <div class="progress" id="progressBar" ref="progress">
       <div class="album-info" v-if="player.currentTrack">
         <!-- <div class="track-name">{{ player.currentTrack.name }}</div> -->
       </div>
@@ -17,11 +17,14 @@
 import { usePlayerStore } from '@/stores/player'
 import { onMounted, ref } from 'vue'
 
-const { player, initPlayer, clickProgress, playerProgressBar, play } = usePlayerStore()
+const { player, initPlayer, clickProgress, play } = usePlayerStore()
 const progress = ref()
 const playBtn = ref()
 onMounted(() => {
   initPlayer()
+
+  const el = document.getElementById('progressBar')
+  player.playerProgressBar = el
 })
 </script>
 

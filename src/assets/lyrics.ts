@@ -252,11 +252,11 @@ export default [
   {
     text: `Girl, whatcha doing to me?`,
     from: 191.0,
-    to: 192.0
+    to: 193.0
   },
   {
     text: `I get crushed under the weight`,
-    from: 192.0,
+    from: 193.0,
     to: 200.0
   },
   {
@@ -298,5 +298,10 @@ export default [
     text: `You know I got a crush on you, ooh`,
     from: 224.0,
     to: 230.0
+  },
+  {
+    text: `❤`,
+    from: 230.0,
+    to: 10000.0
   }
 ]

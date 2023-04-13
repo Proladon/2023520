@@ -1,10 +1,12 @@
 <template>
   <main class="home">
     <Bg />
-    <div class="relative z-1">
+    <div class="relative z-1 flex flex-col h-full">
       <Cover />
       <Player class="mt-[15px]" />
-      <Lyric />
+      <div class="flex-1 items-center h-full relative">
+        <Lyric class="absolute top-0 bottom-0 left-0 right-0 m-auto" />
+      </div>
     </div>
   </main>
 </template>
