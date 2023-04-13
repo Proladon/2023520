@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import lyrics from '@/assets/lyric'
+import lyrics from '@/assets/lyrics'
 import LyricItem from './LyricItem.vue'
 import { usePlayerStore } from '@/stores/player'
 import { computed, ref, watch, toRef } from 'vue'

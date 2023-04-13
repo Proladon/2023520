@@ -1,5 +1,5 @@
 import { reactive, ref } from 'vue'
-import crushOnYou from '@/assets/finding_hope-crush_on_you.mp3'
+import crushOnYou from '@/assets/finding_hope-crush_on_you_cut.mp3'
 
 export type LyricItem = {
   text: string
