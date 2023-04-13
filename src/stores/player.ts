@@ -1,12 +1,19 @@
 import { reactive, ref } from 'vue'
 import crushOnYou from '@/assets/finding_hope-crush_on_you.mp3'
 
+export type LyricItem = {
+  text: string
+  from: number
+  to: number
+}
+
 export interface Player {
   audio: HTMLAudioElement | null
   // circleLeft: number | null,
   barWidth: number
   duration: string | null
   currentTime: string | null
+  rawTime: number
   isTimerPlaying: boolean
   currentTrack: Track | null
   currentTrackIndex: number
@@ -29,6 +36,7 @@ export const usePlayerStore = defineStore('counter', () => {
     barWidth: 0,
     duration: null,
     currentTime: null,
+    rawTime: 0,
     isTimerPlaying: false,
     currentTrack: null,
     currentTrackIndex: 0,
@@ -71,8 +79,11 @@ export const usePlayerStore = defineStore('counter', () => {
     // player.circleLeft = width + '%'
     let durmin = Math.floor(player.audio.duration / 60).toString()
     let dursec = Math.floor(player.audio.duration - Number(durmin) * 60).toString()
+
     let curmin = Math.floor(player.audio.currentTime / 60).toString()
     let cursec = Math.floor(player.audio.currentTime - Number(curmin) * 60).toString()
+    player.rawTime = player.audio.currentTime
+    // let cursec = (player.audio.currentTime - Number(curmin) * 60).toString()
     if (Number(durmin) < 10) {
       durmin = '0' + durmin
     }

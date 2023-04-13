@@ -1,19 +1,76 @@
-export default {
-  '00:02': `Ooh-ooh, yeah, I do`,
-  '00:05': `You know I got a crush on you`,
-  '00:09': `Ooh-ooh, oh, it's true`,
-  '00:12': `You know I got a crush on you`,
-  '00:16': `And I try to play it cool`,
-  '00:18': `But there's only so much I can do`,
-  '00:23': `'Cause ooh-ooh, oh, I do`,
-  '00:25': `You know I got a crush on you`,
-  '00:29': `You might have an idea`,
-  '00:32': `How I feel when I'm with you`,
-  '00:36': `But did you know it goes deeper?`,
-  '00:39': `'Cause, oh, it goes deeper`,
-  '00:43': `Overjoyed when I see you`,
-  '00:46': `Baby, but when you're leaving`,
-  '00:49': `I lose a piece too`
+export default [
+  {
+    text: `Ooh-ooh, yeah, I do`,
+    from: 2.0,
+    to: 5.0
+  },
+  {
+    text: `You know I got a crush on you`,
+    from: 5.0,
+    to: 9.0
+  },
+  {
+    text: `Ooh-ooh, oh, it's true`,
+    from: 9.0,
+    to: 12.0
+  },
+  {
+    text: `You know I got a crush on you`,
+    from: 12.0,
+    to: 16.0
+  },
+  {
+    text: `And I try to play it cool`,
+    from: 16.0,
+    to: 18.0
+  },
+  {
+    text: `But there's only so much I can do`,
+    from: 18.0,
+    to: 23.0
+  },
+  {
+    text: `'Cause ooh-ooh, oh, I do`,
+    from: 23.0,
+    to: 25.0
+  },
+  {
+    text: `You know I got a crush on you`,
+    from: 25.0,
+    to: 29.0
+  },
+  {
+    text: `You might have an idea`,
+    from: 29.0,
+    to: 32.0
+  },
+  {
+    text: `How I feel when I'm with you`,
+    from: 32.0,
+    to: 36.0
+  },
+  {
+    text: `But did you know it goes deeper?`,
+    from: 36.0,
+    to: 39.0
+  },
+  {
+    text: `'Cause, oh, it goes deeper`,
+    from: 39.0,
+    to: 43.0
+  },
+  {
+    text: `Overjoyed when I see you`,
+    from: 43.0,
+    to: 46.0
+  },
+  {
+    text: `Baby, but when you're leaving`,
+    from: 46.0,
+    to: 49.0
+  }
+
+  // `I lose a piece too`,
   // `'Cause it goes with you, but`,
   // `I could think about you`,
   // `Every single hour`,
@@ -58,5 +115,5 @@ export default {
   // `And I try to play it cool`,
   // `But there's only so much I can do`,
   // `'Cause ooh-ooh, oh, I do`,
-  // `You know I got a crush on you, ooh`,
-}
+  // `You know I got a crush on you, ooh`
+]

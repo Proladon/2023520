@@ -1,13 +1,20 @@
 <template>
   <div class="lyric">
-    <p>{{ curTime }}</p>
+    <p>{{ rawTime }}</p>
     <br />
-    <p :class="{ 'fade-in': change, fadeout: !change }">{{ curLyric }}</p>
+    <!-- <p :class="{ 'fade-in': change, 'fade-out': !change }">{{ curLyric }}</p> -->
+
+    <div class="lyrics-wrapper">
+      <div class="lyric-position" v-for="lyric in lyrics" :key="lyric.text">
+        <LyricItem :item="lyric" :curTime="rawTime" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import lyric from '@/assets/lyric'
+import lyrics from '@/assets/lyric'
+import LyricItem from './LyricItem.vue'
 import { usePlayerStore } from '@/stores/player'
 import { computed, ref, watch, toRef } from 'vue'
 import { get } from 'lodash-es'
@@ -15,6 +22,7 @@ import { get } from 'lodash-es'
 const { player } = usePlayerStore()
 
 const curTime = computed(() => player.currentTime)
+const rawTime = computed(() => player.rawTime)
 
 const curLyric = ref('')
 const change = ref(false)
@@ -25,7 +33,7 @@ watch(curTime, () => {
 
 const getLyric = () => {
   if (!player.currentTime) return
-  const text = get(lyric, player.currentTime)
+  const text = get(lyrics, player.currentTime)
   if (text) {
     curLyric.value = text
     change.value = true
@@ -47,29 +55,11 @@ defineProps<{
   @apply flex flex-col justify-center items-center;
 }
 
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+.lyrics-wrapper {
+  @apply relative w-full;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 100;
-    transform: translateY(0px);
-  }
-}
-
-@keyframes fadeout {
-  from {
-    opacity: 100;
-    transform: translateY(0px);
-  }
-  to {
-    opacity: 00;
-    transform: translateY(10px);
-  }
+.lyric-position {
+  @apply absolute top-0 bottom-0 left-0 right-0 m-auto;
 }
 </style>
