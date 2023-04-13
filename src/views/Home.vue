@@ -1,9 +1,11 @@
 <template>
   <main class="home">
-    <!-- <Bg /> -->
-    <!-- <Cover /> -->
-    <Player class="mt-[15px]" />
-    <Lyric />
+    <Bg />
+    <div class="relative z-1">
+      <Cover />
+      <Player class="mt-[15px]" />
+      <Lyric />
+    </div>
   </main>
 </template>
 
