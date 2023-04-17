@@ -27,7 +27,8 @@ watch(toRef(props, 'curTime'), () => {
 
 <style scoped lang="postcss">
 .lyric-item {
-  @apply text-center;
+  @apply text-center text-white text-[20px];
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.9);
 }
 
 .fade-in {

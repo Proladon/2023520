@@ -8,6 +8,8 @@
         <Lyric class="absolute top-0 bottom-0 left-0 right-0 m-auto" />
       </div>
     </div>
+
+    <StoryModal v-model:show="showStory" />
   </main>
 </template>
 
@@ -16,6 +18,11 @@ import Bg from '@/components/Bg.vue'
 import Cover from '@/components/Cover.vue'
 import Player from '@/components/Player.vue'
 import Lyric from '@/components/Lyric/Lyric.vue'
+import StoryModal from '@/components/Modal/StoryModal.vue'
+
+import { ref } from 'vue'
+
+const showStory = ref(true)
 </script>
 
 <style scoped lang="postcss">

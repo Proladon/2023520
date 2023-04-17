@@ -9,6 +9,8 @@ import { RouterView } from 'vue-router'
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Quicksand:wght@400;500;600&display=swap');
+
 html,
 body,
 #app,
@@ -16,6 +18,8 @@ body,
   @apply w-full h-full;
   @apply overflow-hidden;
   @apply bg-gray-700;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 </style>
 

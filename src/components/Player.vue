@@ -4,11 +4,9 @@
       <div class="album-info" v-if="player.currentTrack">
         <!-- <div class="track-name">{{ player.currentTrack.name }}</div> -->
       </div>
-      <div class="progress__bar" @click="clickProgress">
+      <div class="progress__bar">
         <div class="progress__current" :style="{ width: `${player.barWidth}%` }"></div>
       </div>
-
-      <button ref="playBtn" @click="play">play</button>
     </div>
   </div>
 </template>
@@ -17,9 +15,8 @@
 import { usePlayerStore } from '@/stores/player'
 import { onMounted, ref } from 'vue'
 
-const { player, initPlayer, clickProgress, play } = usePlayerStore()
+const { player, initPlayer } = usePlayerStore()
 const progress = ref()
-const playBtn = ref()
 onMounted(() => {
   initPlayer()
 

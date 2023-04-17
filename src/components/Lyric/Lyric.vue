@@ -47,7 +47,6 @@ defineProps<{
 
 <style scoped lang="postcss">
 .lyric {
-  @apply text-white;
   @apply flex flex-col justify-center items-center;
 }
 
