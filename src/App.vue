@@ -1,8 +1,8 @@
 <template>
   <main class="app">
     <div class="view-wrapper"></div>
-    <Landing v-show="!landed" @confirm="onLanded" />
-    <Home v-show="landed" />
+    <Landing v-if="!landed" @confirm="onLanded" @close="landed = true" />
+    <Home />
   </main>
 </template>
 
@@ -17,7 +17,6 @@ const landed = ref(false)
 const { play } = usePlayerStore()
 
 const onLanded = () => {
-  landed.value = true
   play()
 }
 </script>

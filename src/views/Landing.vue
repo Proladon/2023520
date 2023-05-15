@@ -25,9 +25,11 @@
 import { ref } from 'vue'
 import { Icon } from '@vicons/utils'
 import { Headphones28Filled, Speaker220Filled } from '@vicons/fluent'
-const emits = defineEmits(['confirm'])
+import anime from 'animejs'
+const emits = defineEmits(['confirm', 'close'])
 
 const step = ref<number>(0)
+const fading = ref<boolean>(false)
 const messages: string[] = [
   `
   Hey ! Today is 520 ❤<br>
@@ -38,12 +40,32 @@ const messages: string[] = [
   (๑•̀ㅂ•́)و✧`,
   `Ready ?`
 ]
+
+const fadeout = () => {
+  fading.value = true
+  const res = anime({
+    targets: ['.landing'],
+    opacity: 0,
+    duration: 5500,
+    easing: 'easeInOutQuad'
+  })
+  res.finished.then(() => emits('close'))
+}
 const handlePre = () => {
+  if (fading.value) return
   if (!step.value) return
   step.value -= 1
 }
 const handleNext = () => {
-  if (step.value === 2) return emits('confirm')
+  if (fading.value) return
+  if (step.value === 2) {
+    fadeout()
+    setTimeout(() => {
+      emits('confirm')
+    }, 1000)
+
+    return
+  }
   step.value += 1
 }
 </script>
@@ -54,6 +76,7 @@ const handleNext = () => {
   @apply flex flex-col items-center justify-center gap-[30px];
   @apply fixed top-0 bottom-0 left-0 right-0 m-auto;
   @apply z-20;
+  @apply bg-gray-700;
 }
 
 .hint-img {
