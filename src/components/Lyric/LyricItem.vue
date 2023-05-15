@@ -6,12 +6,17 @@
 
 <script setup lang="ts">
 import type { LyricItem } from '@/stores/player'
-import { computed, ref, watch, toRef } from 'vue'
+import { computed, ref, watch, toRef, withDefaults } from 'vue'
 
-const props = defineProps<{
-  item: LyricItem
-  curTime: number
-}>()
+const props = withDefaults(
+  defineProps<{
+    item: LyricItem
+    curTime: number
+  }>(),
+  {
+    curTime: 0
+  }
+)
 
 const fade = ref(false)
 

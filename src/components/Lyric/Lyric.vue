@@ -39,10 +39,6 @@ const getLyric = () => {
     change.value = false
   }, 500)
 }
-
-defineProps<{
-  curTime: string
-}>()
 </script>
 
 <style scoped lang="postcss">
