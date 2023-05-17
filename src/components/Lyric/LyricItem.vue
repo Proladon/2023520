@@ -1,6 +1,6 @@
 <template>
   <div v-if="showLyric" class="lyric-item fade-in" :class="{ 'fade-out': fade }">
-    {{ item.text }}
+    <p v-html="item.text" />
   </div>
 </template>
 

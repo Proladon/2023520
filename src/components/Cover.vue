@@ -4,7 +4,7 @@
 
     <div class="cover-info-wrapper">
       <p class="song-name">Crush On You</p>
-      <p class="name">My Little Jessica</p>
+      <p class="name">2023 / 5 / 20</p>
     </div>
   </div>
 </template>

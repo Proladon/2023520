@@ -1,28 +1,30 @@
 <template>
   <div class="landing">
-    <header>
-      <div class="hint-img" v-if="step === 1">
-        <Icon color="grey" size="40">
-          <Headphones28Filled />
-        </Icon>
-        /
-        <Icon color="grey" size="40">
-          <Speaker220Filled />
-        </Icon>
-      </div>
-    </header>
+    <div class="wrapper">
+      <header>
+        <div class="hint-img" v-if="step === 4">
+          <Icon color="grey" size="40">
+            <Headphones28Filled />
+          </Icon>
+          /
+          <Icon color="grey" size="40">
+            <Speaker220Filled />
+          </Icon>
+        </div>
+      </header>
 
-    <main v-html="messages[step]"></main>
+      <main class="content" v-html="messages[step]"></main>
 
-    <footer class="flex gap-[20px]">
-      <button @click="handlePre">Pre</button>
-      <button @click="handleNext">Next</button>
-    </footer>
+      <footer class="flex gap-[20px]">
+        <div v-if="step !== 0" @click="handlePre">Pre</div>
+        <div @click="handleNext">Next</div>
+      </footer>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { Icon } from '@vicons/utils'
 import { Headphones28Filled, Speaker220Filled } from '@vicons/fluent'
 import anime from 'animejs'
@@ -31,14 +33,15 @@ const emits = defineEmits(['confirm', 'close'])
 const step = ref<number>(0)
 const fading = ref<boolean>(false)
 const messages: string[] = [
-  `
-  Hey ! Today is 520 ❤<br>
-  And just a song I wanna give you <br>
+  `Hey ! Today is 520 ❤ <br>
   o((>ω< ))o
   `,
+  `There's so munch things and memories in past two month between us...`,
+  `And just a song I wanna give you <br>(。・∀・)ノ`,
+  `This song really such as my mind...<br>:(,,ŏ ŏ ,,):`,
   `So make sure you put on earphones or open the speaker<br>
   (๑•̀ㅂ•́)و✧`,
-  `Ready ?`
+  `Ready ~ ?`
 ]
 
 const fadeout = () => {
@@ -58,7 +61,7 @@ const handlePre = () => {
 }
 const handleNext = () => {
   if (fading.value) return
-  if (step.value === 2) {
+  if (step.value === 5) {
     fadeout()
     setTimeout(() => {
       emits('confirm')
@@ -68,15 +71,29 @@ const handleNext = () => {
   }
   step.value += 1
 }
+
+onMounted(() => {
+  anime({
+    targets: ['.wrapper'],
+    opacity: [0, 100],
+    duration: 12000,
+    easing: 'easeInOutQuad'
+  })
+})
 </script>
 
 <style scoped lang="postcss">
 .landing {
   @apply w-full h-full px-[40px] text-[gray] text-[18px] leading-[36px];
-  @apply flex flex-col items-center justify-center gap-[30px];
+
   @apply fixed top-0 bottom-0 left-0 right-0 m-auto;
   @apply z-20;
   @apply bg-gray-700;
+}
+
+.wrapper {
+  @apply w-full h-full;
+  @apply flex flex-col items-center justify-center gap-[30px];
 }
 
 .hint-img {
