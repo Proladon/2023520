@@ -36,7 +36,7 @@ const messages: string[] = [
   `Hey ! Today is 520 ❤ <br>
   o((>ω< ))o
   `,
-  `There's so munch things and memories in past two month between us...`,
+  `There are so many things and memories in the past two months between us...`,
   `And just a song I wanna give you <br>(。・∀・)ノ`,
   `This song really such as my mind...<br>:(,,ŏ ŏ ,,):`,
   `So make sure you put on earphones or open the speaker<br>
