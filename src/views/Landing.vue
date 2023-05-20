@@ -2,7 +2,7 @@
   <div class="landing">
     <div class="wrapper">
       <header>
-        <div class="hint-img" v-if="step === 4">
+        <div class="hint-img" v-if="step === messages.length - 2">
           <Icon color="grey" size="40">
             <Headphones28Filled />
           </Icon>
@@ -36,8 +36,9 @@ const messages: string[] = [
   `Hey ! Today is 520 ❤ <br>
   o((>ω< ))o
   `,
-  `There are so many things and memories in the past two months between us...`,
-  `And just a song I wanna give you <br>(。・∀・)ノ`,
+  `In the past two months, there was so many things and memories between us`,
+  `And still...<br>have a lot to say to you...`,
+  `But just a song<br>I wanna give you in this day <br>(。・∀・)ノ`,
   `This song really such as my mind...<br>:(,,ŏ ŏ ,,):`,
   `So make sure you put on earphones or open the speaker<br>
   (๑•̀ㅂ•́)و✧`,
@@ -61,7 +62,7 @@ const handlePre = () => {
 }
 const handleNext = () => {
   if (fading.value) return
-  if (step.value === 5) {
+  if (step.value === messages.length - 1) {
     fadeout()
     setTimeout(() => {
       emits('confirm')

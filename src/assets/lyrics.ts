@@ -300,7 +300,7 @@ export default [
     to: 230.0
   },
   {
-    text: `❤<br>Rex`,
+    text: `❤<br>For My Jessica`,
     from: 230.0,
     to: 10000.0
   }
