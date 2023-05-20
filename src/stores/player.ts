@@ -49,7 +49,7 @@ export const usePlayerStore = defineStore('player', () => {
   const tracks: Track[] = [
     {
       name: 'Crush On You',
-      artist: 'Sia',
+      artist: 'Finding Hope',
       cover: 'https://raw.githubusercontent.com/muhammederdem/mini-player/master/img/4.jpg',
       source: crushOnYou,
       url: 'https://www.youtube.com/watch?v=kYgGwWYOd9Y'

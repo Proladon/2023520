@@ -3,6 +3,7 @@
     <div class="view-wrapper"></div>
     <Landing v-if="!landed" @confirm="onLanded" @close="landed = true" />
     <Home />
+    <ControlMask v-if="landed" @play="play" />
   </main>
 </template>
 
@@ -10,6 +11,7 @@
 import { ref } from 'vue'
 import Home from '@/views/Home.vue'
 import Landing from '@/views/Landing.vue'
+import ControlMask from './components/ControlMask.vue'
 import { usePlayerStore } from '@/stores/player'
 
 const landed = ref(false)
